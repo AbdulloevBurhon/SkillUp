@@ -53,8 +53,8 @@ function Register() {
         justify-center
         items-center
 
-        px-4
-        py-10
+      
+      
 
         bg-gradient-to-br
         from-green-100
@@ -69,8 +69,9 @@ function Register() {
       <div
         className="
           w-full max-w-sm
-
-          p-6 sm:p-8
+    animate-authIn
+          px-3 sm:px-6
+          py-3 sm:py-3
           rounded-3xl
 
           bg-white/90
