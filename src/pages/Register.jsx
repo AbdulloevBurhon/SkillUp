@@ -41,7 +41,6 @@ function Register() {
       confirm: false,
     });
 
-    // ❌ Пустые поля
     if (!name || !age || !email || !password || !confirm) {
       setError("Пожалуйста, заполните все поля");
 
@@ -57,15 +56,13 @@ function Register() {
       return;
     }
 
-    // ❌ Возраст
     if (+age < 12) {
       setError("Вам должно быть не менее 12 лет");
-      setFieldError((prev) => ({ ...prev, age: true }));
+      setFieldError((p) => ({ ...p, age: true }));
       triggerShake();
       return;
     }
 
-    // ❌ Пароли не совпадают
     if (password !== confirm) {
       setError("Пароли не совпадают");
 
@@ -78,58 +75,53 @@ function Register() {
       return;
     }
 
-    // Загрузка
     setLoading(true);
 
     setTimeout(() => {
       setLoading(false);
-
       alert("Регистрация успешна 🎉");
-
-      console.log({
-        name,
-        age,
-        email,
-        password,
-      });
     }, 1500);
   };
 
   return (
-    <div
+    <main
       className="
-    min-h-screen
-    w-full
-    overflow-hidden
-    grid place-items-center
-    relative
-    bg-gradient-to-br
-    from-green-100
-    via-blue-100
-    to-purple-100
-    dark:from-gray-900
-    dark:via-gray-800
-    dark:to-gray-900
-  "
-    >
-      {/* Glow */}
-      <div className="pointer-events-none absolute -top-40 -left-40 w-[28rem] h-[28rem] bg-green-400/25 rounded-full blur-[120px]" />
-      <div className="pointer-events-none absolute -bottom-40 -right-40 w-[28rem] h-[28rem] bg-purple-400/25 rounded-full blur-[120px]" />
+        w-full
 
+        min-h-[calc(100vh-64px)]
+
+        flex
+        items-center
+        justify-center
+
+        px-4 py-10
+
+        bg-gradient-to-br
+        from-green-100
+        via-blue-100
+        to-purple-100
+        dark:from-gray-900
+        dark:via-gray-800
+        dark:to-gray-900
+      "
+    >
       {/* Card */}
       <div
         className="
-          relative z-10
-             animate-authIn
-             -translate-y-10 sm:-translate-y-5
-         w-[90%] max-w-xs sm:max-w-sm
-         p-4 sm:p-8
+          animate-authIn
+
+          w-full max-w-sm
+
+          p-6 sm:p-8
+
           rounded-3xl
           bg-white/90
           dark:bg-gray-800/90
+
           backdrop-blur-2xl
           border border-gray-200/40
           dark:border-gray-700/40
+
           shadow-xl
         "
       >
@@ -142,7 +134,7 @@ function Register() {
         )}
 
         {/* Inputs */}
-        <div className="space-y-4 mb-4">
+        <div className="space-y-4 mb-5">
           {/* Name */}
           <div>
             <Label htmlFor="name">Имя</Label>
@@ -246,7 +238,7 @@ function Register() {
           </Link>
         </p>
       </div>
-    </div>
+    </main>
   );
 }
 
