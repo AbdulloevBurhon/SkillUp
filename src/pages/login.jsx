@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Login() {
   return (
     <div
-      style={{ minHeight: "100dvh" }}
+      style={{ minHeight: "80dvh" }}
       className="
         w-full
         grid place-items-center
