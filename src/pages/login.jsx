@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Login() {
   return (
     <div
-      style={{ height: "100dvh" }}
+      style={{ height: "80dvh" }}
       className="
         w-full
         overflow-hidden
