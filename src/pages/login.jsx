@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 function Login() {
   return (
     <div
-      style={{ minHeight: "80dvh" }}
+      style={{ height: "100dvh" }}
       className="
         w-full
-        grid place-items-center
         overflow-hidden
+        grid place-items-center
         relative
         bg-gradient-to-br
         from-blue-100
@@ -18,25 +18,25 @@ function Login() {
         dark:to-gray-900
       "
     >
-      {/* Glow */}
-      <div className="pointer-events-none absolute -top-32 -left-32 w-96 h-96 bg-blue-400/30 rounded-full blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-32 -right-32 w-96 h-96 bg-purple-400/30 rounded-full blur-3xl" />
+      {/* Ambient Glow */}
+      <div className="pointer-events-none absolute -top-40 -left-40 w-[28rem] h-[28rem] bg-blue-400/25 rounded-full blur-[120px]" />
+      <div className="pointer-events-none absolute -bottom-40 -right-40 w-[28rem] h-[28rem] bg-purple-400/25 rounded-full blur-[120px]" />
 
       {/* Card */}
       <div
         className="
           relative z-10
-          w-[92%] max-w-sm
+          w-[90%] max-w-sm
           p-8
-          rounded-2xl
+          rounded-3xl
           bg-white/90
           dark:bg-gray-800/90
-          backdrop-blur-xl
-          border border-gray-200/50
-          dark:border-gray-700/50
-          shadow-xl
+          backdrop-blur-2xl
+          border border-gray-200/40
+          dark:border-gray-700/40
+          shadow-[0_20px_60px_rgba(0,0,0,0.15)]
           transition-all
-          hover:shadow-2xl
+          hover:shadow-[0_30px_80px_rgba(0,0,0,0.25)]
         "
       >
         {/* Title */}
@@ -49,10 +49,10 @@ function Login() {
           className="
             w-full mb-4 px-4 py-2.5
             rounded-xl
-            border border-gray-300
-            dark:border-gray-600
+            border border-gray-300/70
+            dark:border-gray-600/70
             bg-transparent
-            focus:ring-2 focus:ring-blue-500/50
+            focus:ring-2 focus:ring-blue-500/40
             focus:border-blue-500
             outline-none
             transition
@@ -66,10 +66,10 @@ function Login() {
           className="
             w-full mb-5 px-4 py-2.5
             rounded-xl
-            border border-gray-300
-            dark:border-gray-600
+            border border-gray-300/70
+            dark:border-gray-600/70
             bg-transparent
-            focus:ring-2 focus:ring-blue-500/50
+            focus:ring-2 focus:ring-blue-500/40
             focus:border-blue-500
             outline-none
             transition
@@ -89,7 +89,7 @@ function Login() {
             tracking-wide
             hover:opacity-90
             hover:shadow-lg
-            active:scale-95
+            active:scale-[0.97]
             transition
           "
         >
@@ -98,9 +98,9 @@ function Login() {
 
         {/* Divider */}
         <div className="my-6 flex items-center gap-3">
-          <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600" />
+          <div className="flex-1 h-px bg-gray-300/70 dark:bg-gray-600/70" />
           <span className="text-sm text-gray-500">или</span>
-          <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600" />
+          <div className="flex-1 h-px bg-gray-300/70 dark:bg-gray-600/70" />
         </div>
 
         {/* Register */}

@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import ThemeSwitcher from "../ui/theme/switcher";
 import LangSwitcher from "../ui/lang/LangSwitcher";
 import Logo from "./logo";
