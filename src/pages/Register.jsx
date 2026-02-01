@@ -16,22 +16,62 @@ function Register() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [shake, setShake] = useState(false);
+
+  const [fieldError, setFieldError] = useState({
+    name: false,
+    age: false,
+    email: false,
+    password: false,
+    confirm: false,
+  });
+
+  const triggerShake = () => {
+    setShake(true);
+    setTimeout(() => setShake(false), 400);
+  };
 
   const handleRegister = () => {
     setError("");
+    setFieldError({
+      name: false,
+      age: false,
+      email: false,
+      password: false,
+      confirm: false,
+    });
 
     if (!name || !age || !email || !password || !confirm) {
-      setError("Заполните все поля");
+      setError("Пожалуйста, заполните все поля");
+
+      setFieldError({
+        name: !name,
+        age: !age,
+        email: !email,
+        password: !password,
+        confirm: !confirm,
+      });
+
+      triggerShake();
       return;
     }
 
     if (+age < 12) {
-      setError("Минимум 12 лет");
+      setError("Вам должно быть не менее 12 лет");
+      setFieldError((p) => ({ ...p, age: true }));
+      triggerShake();
       return;
     }
 
     if (password !== confirm) {
       setError("Пароли не совпадают");
+
+      setFieldError({
+        password: true,
+        confirm: true,
+      });
+
+      triggerShake();
       return;
     }
 
@@ -44,17 +84,17 @@ function Register() {
   };
 
   return (
-    <div
+    <main
       className="
-        min-h-[calc(100vh-80px)]
         w-full
 
-        flex
-        justify-center
-        items-center
+        min-h-[calc(100vh-64px)]
 
-      
-      
+        flex
+        items-center
+        justify-center
+
+        py-3 sm: sm:py-6
 
         bg-gradient-to-br
         from-green-100
@@ -68,16 +108,17 @@ function Register() {
       {/* Card */}
       <div
         className="
-          w-full max-w-sm
-    animate-authIn
-          px-3 sm:px-6
-          py-3 sm:py-3
-          rounded-3xl
+          animate-authIn
 
+          w-full max-w-sm
+
+          p-6 sm:p-8
+
+          rounded-3xl
           bg-white/90
           dark:bg-gray-800/90
 
-          backdrop-blur-xl
+          backdrop-blur-2xl
           border border-gray-200/40
           dark:border-gray-700/40
 
@@ -104,6 +145,8 @@ function Register() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               leftIcon={<User size={18} />}
+              error={fieldError.name}
+              className={shake && fieldError.name ? "animate-shake" : ""}
               disabled={loading}
             />
           </div>
@@ -119,6 +162,8 @@ function Register() {
               value={age}
               onChange={(e) => setAge(e.target.value)}
               leftIcon={<Calendar size={18} />}
+              error={fieldError.age}
+              className={shake && fieldError.age ? "animate-shake" : ""}
               disabled={loading}
             />
           </div>
@@ -134,6 +179,8 @@ function Register() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               leftIcon={<Mail size={18} />}
+              error={fieldError.email}
+              className={shake && fieldError.email ? "animate-shake" : ""}
               disabled={loading}
             />
           </div>
@@ -150,13 +197,15 @@ function Register() {
               onChange={(e) => setPassword(e.target.value)}
               showToggle
               leftIcon={<Lock size={18} />}
+              error={fieldError.password}
+              className={shake && fieldError.password ? "animate-shake" : ""}
               disabled={loading}
             />
           </div>
 
           {/* Confirm */}
           <div>
-            <Label htmlFor="confirm">Повторите пароль</Label>
+            <Label htmlFor="confirm">Подтвердите пароль</Label>
 
             <Input
               id="confirm"
@@ -166,6 +215,8 @@ function Register() {
               onChange={(e) => setConfirm(e.target.value)}
               showToggle
               leftIcon={<Lock size={18} />}
+              error={fieldError.confirm}
+              className={shake && fieldError.confirm ? "animate-shake" : ""}
               disabled={loading}
             />
           </div>
@@ -187,7 +238,7 @@ function Register() {
           </Link>
         </p>
       </div>
-    </div>
+    </main>
   );
 }
 

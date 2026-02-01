@@ -13,10 +13,11 @@ function Logo() {
     <div className="flex items-center cursor-pointer select-none">
       <div
         className="
-          w-10 h-10
-          sm:w-12 sm:h-12
-          md:w-16 md:h-16
-          lg:w-24 lg:h-24
+    w-[45px] h-[45px]
+sm:w-[53px] sm:h-[53px]
+md:w-[69px] md:h-[69px]
+lg:w-[101px] lg:h-[101px]
+
 
           p-1
           rounded-full
