@@ -3,36 +3,36 @@ import { Link } from "react-router-dom";
 function Login() {
   return (
     <div
+      style={{ minHeight: "100dvh" }}
       className="
-    h-screen
-    overflow-hidden
-    flex items-center justify-center
-    relative
-    bg-gradient-to-br
-    from-blue-100
-    via-purple-100
-    to-pink-100
-    dark:from-gray-900
-    dark:via-gray-800
-    dark:to-gray-900
-  "
+        w-full
+        grid place-items-center
+        overflow-hidden
+        relative
+        bg-gradient-to-br
+        from-blue-100
+        via-purple-100
+        to-pink-100
+        dark:from-gray-900
+        dark:via-gray-800
+        dark:to-gray-900
+      "
     >
-      {/* Background blur glow */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-400/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-purple-400/30 rounded-full blur-3xl" />
+      {/* Glow */}
+      <div className="pointer-events-none absolute -top-32 -left-32 w-96 h-96 bg-blue-400/30 rounded-full blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-32 -right-32 w-96 h-96 bg-purple-400/30 rounded-full blur-3xl" />
 
       {/* Card */}
       <div
         className="
           relative z-10
-          w-full max-w-sm
+          w-[92%] max-w-sm
           p-8
           rounded-2xl
           bg-white/90
           dark:bg-gray-800/90
           backdrop-blur-xl
-          border
-          border-gray-200/50
+          border border-gray-200/50
           dark:border-gray-700/50
           shadow-xl
           transition-all
@@ -49,12 +49,10 @@ function Login() {
           className="
             w-full mb-4 px-4 py-2.5
             rounded-xl
-            border
-            border-gray-300
+            border border-gray-300
             dark:border-gray-600
             bg-transparent
-            focus:ring-2
-            focus:ring-blue-500/50
+            focus:ring-2 focus:ring-blue-500/50
             focus:border-blue-500
             outline-none
             transition
@@ -68,12 +66,10 @@ function Login() {
           className="
             w-full mb-5 px-4 py-2.5
             rounded-xl
-            border
-            border-gray-300
+            border border-gray-300
             dark:border-gray-600
             bg-transparent
-            focus:ring-2
-            focus:ring-blue-500/50
+            focus:ring-2 focus:ring-blue-500/50
             focus:border-blue-500
             outline-none
             transition
