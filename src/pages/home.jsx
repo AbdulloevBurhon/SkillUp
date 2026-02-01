@@ -4,7 +4,7 @@ function Home() {
   return (
     <div
       className="
-        min-h-screen
+        h-95 sm:h-screen
         w-full
         flex
         items-center
