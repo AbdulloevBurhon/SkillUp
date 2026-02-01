@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Login() {
   return (
     <div
-      style={{ height: "80dvh" }}
+      style={{ height: "100dvh" }}
       className="
         w-full
         overflow-hidden
@@ -18,7 +18,7 @@ function Login() {
         dark:to-gray-900
       "
     >
-      {/* Ambient Glow */}
+      {/* Glow */}
       <div className="pointer-events-none absolute -top-40 -left-40 w-[28rem] h-[28rem] bg-blue-400/25 rounded-full blur-[120px]" />
       <div className="pointer-events-none absolute -bottom-40 -right-40 w-[28rem] h-[28rem] bg-purple-400/25 rounded-full blur-[120px]" />
 
@@ -29,10 +29,8 @@ function Login() {
           animate-authIn
           w-[90%] max-w-sm
           p-8
-           -translate-y-10
-           +sm:-translate-y-12
-+translate-y-6
           rounded-3xl
+          -translate-y-10
           bg-white/90
           dark:bg-gray-800/90
           backdrop-blur-2xl
@@ -40,6 +38,7 @@ function Login() {
           dark:border-gray-700/40
           shadow-[0_20px_60px_rgba(0,0,0,0.15)]
           transition-all
+          hover:scale-[1.01]
           hover:shadow-[0_30px_80px_rgba(0,0,0,0.25)]
         "
       >
@@ -51,12 +50,13 @@ function Login() {
           type="email"
           placeholder="Email"
           className="
+            animate-input-1
             w-full mb-4 px-4 py-2.5
             rounded-xl
             border border-gray-300/70
             dark:border-gray-600/70
             bg-transparent
-            focus:ring-2 focus:ring-blue-500/40
+            focus:ring-4 focus:ring-blue-500/30
             focus:border-blue-500
             outline-none
             transition
@@ -68,13 +68,14 @@ function Login() {
           type="password"
           placeholder="Password"
           className="
+            animate-input-2
             w-full mb-5 px-4 py-2.5
             rounded-xl
             border border-gray-300/70
             dark:border-gray-600/70
             bg-transparent
-            focus:ring-2 focus:ring-blue-500/40
-            focus:border-blue-500
+            focus:ring-4 focus:ring-purple-500/30
+            focus:border-purple-500
             outline-none
             transition
           "
@@ -83,6 +84,7 @@ function Login() {
         {/* Button */}
         <button
           className="
+            animate-btn
             w-full py-2.5
             rounded-xl
             bg-gradient-to-r
@@ -92,9 +94,9 @@ function Login() {
             font-semibold
             tracking-wide
             hover:opacity-90
-            hover:shadow-lg
-            active:scale-[0.97]
-            transition
+            hover:shadow-xl
+            active:scale-[0.96]
+            transition-all
           "
         >
           Войти
