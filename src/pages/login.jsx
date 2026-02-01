@@ -1,10 +1,74 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
 import Button from "../components/ui/button/Button";
-import { useEffect, useState } from "react";
 import Input from "../components/ui/input/Input";
 
+import { Mail, Lock } from "lucide-react";
+import Label from "../components/ui/label/Label";
+
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [error, setError] = useState("");
+
+  const [shake, setShake] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  // Для подсветки полей
+  const [fieldError, setFieldError] = useState({
+    email: false,
+    password: false,
+  });
+
+  const triggerShake = () => {
+    setShake(true);
+    setTimeout(() => setShake(false), 400);
+  };
+
+  const handleLogin = () => {
+    // Сброс ошибок
+    setError("");
+    setFieldError({ email: false, password: false });
+
+    // ❌ Пустые поля
+    if (!email || !password) {
+      setError("Пожалуйста, заполните все поля");
+
+      setFieldError({
+        email: !email,
+        password: !password,
+      });
+
+      triggerShake();
+      return;
+    }
+
+    // Старт загрузки
+    setLoading(true);
+
+    // Fake API
+    setTimeout(() => {
+      // ❌ Неверные данные
+      if (email !== "test@mail.com" || password !== "123456") {
+        setError("Неверный логин или пароль");
+
+        setFieldError({
+          email: true,
+          password: true,
+        });
+
+        triggerShake();
+        setLoading(false);
+        return;
+      }
+
+      // ✅ Успех
+      setLoading(false);
+      alert("Успешный вход 😎");
+    }, 1500);
+  };
 
   return (
     <div
@@ -43,40 +107,59 @@ function Login() {
           dark:border-gray-700/40
           shadow-[0_20px_60px_rgba(0,0,0,0.15)]
           transition-all
-          hover:scale-[1.01]
-          hover:shadow-[0_30px_80px_rgba(0,0,0,0.25)]
         "
       >
         {/* Title */}
         <h2 className="text-3xl font-bold mb-6 text-center">Вход</h2>
 
-        {/* Email */}
+        {/* Error message */}
+        {error && (
+          <p className="mb-4 text-sm text-center text-red-500">{error}</p>
+        )}
+
+        {/* Inputs */}
         <div className="space-y-4 mb-4">
           {/* Email */}
           <div className="flex flex-col gap-1">
-            <label className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              Email
-            </label>
+            <Label htmlFor={"email"}>Логин</Label>
 
             <Input
+              id="email"
               type="email"
-              placeholder="example@mail.com"
-              variant="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              leftIcon={<Mail size={18} />}
+              error={fieldError.email}
+              className={shake && fieldError.email ? "animate-shake" : ""}
+              disabled={loading}
             />
           </div>
 
           {/* Password */}
           <div className="flex flex-col gap-1">
-            <label className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              Пароль
-            </label>
+            <Label htmlFor="password">Пароль</Label>
 
-            <Input type="password" placeholder="••••••••" variant="password" />
+            <Input
+              type="password"
+              placeholder="Пароль"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              showToggle
+              leftIcon={<Lock size={18} />}
+              error={fieldError.password}
+              className={shake && fieldError.password ? "animate-shake" : ""}
+              disabled={loading}
+              id="password"
+            />
           </div>
         </div>
 
         {/* Button */}
-        <Button loading={loading}>Войти</Button>
+        <Button onClick={handleLogin} loading={loading} disabled={loading}>
+          {loading ? "Вход..." : "Войти"}
+        </Button>
+
         {/* Divider */}
         <div className="my-6 flex items-center gap-3">
           <div className="flex-1 h-px bg-gray-300/70 dark:bg-gray-600/70" />
