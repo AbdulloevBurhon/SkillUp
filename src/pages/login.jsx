@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import Button from "../components/ui/button/Button";
 import Input from "../components/ui/input/Input";
 
@@ -8,6 +8,7 @@ import { Mail, Lock } from "lucide-react";
 import Label from "../components/ui/label/Label";
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,7 +27,6 @@ function Login() {
     setShake(true);
     setTimeout(() => setShake(false), 400);
   };
-
   const handleLogin = () => {
     // Сброс ошибок
     setError("");
@@ -64,9 +64,9 @@ function Login() {
         return;
       }
 
-      // ✅ Успех
+      // ✅ Успех → переход в профиль
       setLoading(false);
-      alert("Успешный вход 😎");
+      navigate("/profile"); // ← ВОТ ЭТО ГЛАВНОЕ
     }, 1500);
   };
 
