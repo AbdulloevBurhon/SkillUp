@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 
 import MainLayout from "../layout/MainLayout";
 
@@ -8,11 +12,14 @@ import Home from "../pages/home";
 
 const router = createBrowserRouter([
   {
-    element: <MainLayout />, // ВСЕГДА с Header
+    element: <MainLayout />, // Header всегда
     children: [
-      { path: "/", element: <Home /> },
+      // 👉 Redirect с / на /login
+      { path: "/", element: <Navigate to="/login" replace /> },
+
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
+      { path: "/home", element: <Home /> },
     ],
   },
 ]);
