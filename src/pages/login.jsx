@@ -26,6 +26,7 @@ function Login() {
       <div
         className="
           relative z-10
+          animate-authIn
           w-[90%] max-w-sm
           p-8
            -translate-y-10
