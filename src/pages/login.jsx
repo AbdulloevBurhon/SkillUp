@@ -4,18 +4,18 @@ function Login() {
   return (
     <div
       className="
-        h-screen
-        overflow-hidden
-        flex items-center justify-center
-        relative
-        bg-gradient-to-br
-        from-blue-100
-        via-purple-100
-        to-pink-100
-        dark:from-gray-900
-        dark:via-gray-800
-        dark:to-gray-900
-      "
+    h-screen
+    overflow-hidden
+    flex items-center justify-center
+    relative
+    bg-gradient-to-br
+    from-blue-100
+    via-purple-100
+    to-pink-100
+    dark:from-gray-900
+    dark:via-gray-800
+    dark:to-gray-900
+  "
     >
       {/* Background blur glow */}
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-400/30 rounded-full blur-3xl" />
