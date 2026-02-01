@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import Button from "../components/ui/button/Button";
+import { useEffect, useState } from "react";
+import Input from "../components/ui/input/Input";
 
 function Login() {
+  const [loading, setLoading] = useState(false);
+
   return (
     <div
       style={{ height: "80dvh" }}
@@ -46,62 +51,32 @@ function Login() {
         <h2 className="text-3xl font-bold mb-6 text-center">Вход</h2>
 
         {/* Email */}
-        <input
-          type="email"
-          placeholder="Email"
-          className="
-            animate-input-1
-            w-full mb-4 px-4 py-2.5
-            rounded-xl
-            border border-gray-300/70
-            dark:border-gray-600/70
-            bg-transparent
-            focus:ring-4 focus:ring-blue-500/30
-            focus:border-blue-500
-            outline-none
-            transition
-          "
-        />
+        <div className="space-y-4 mb-4">
+          {/* Email */}
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              Email
+            </label>
 
-        {/* Password */}
-        <input
-          type="password"
-          placeholder="Password"
-          className="
-            animate-input-2
-            w-full mb-5 px-4 py-2.5
-            rounded-xl
-            border border-gray-300/70
-            dark:border-gray-600/70
-            bg-transparent
-            focus:ring-4 focus:ring-purple-500/30
-            focus:border-purple-500
-            outline-none
-            transition
-          "
-        />
+            <Input
+              type="email"
+              placeholder="example@mail.com"
+              variant="email"
+            />
+          </div>
+
+          {/* Password */}
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              Пароль
+            </label>
+
+            <Input type="password" placeholder="••••••••" variant="password" />
+          </div>
+        </div>
 
         {/* Button */}
-        <button
-          className="
-            animate-btn
-            w-full py-2.5
-            rounded-xl
-            bg-gradient-to-r
-            from-blue-500
-            to-purple-500
-            text-white
-            font-semibold
-            tracking-wide
-            hover:opacity-90
-            hover:shadow-xl
-            active:scale-[0.96]
-            transition-all
-          "
-        >
-          Войти
-        </button>
-
+        <Button loading={loading}>Войти</Button>
         {/* Divider */}
         <div className="my-6 flex items-center gap-3">
           <div className="flex-1 h-px bg-gray-300/70 dark:bg-gray-600/70" />
