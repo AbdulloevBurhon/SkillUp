@@ -13,16 +13,25 @@ function Logo() {
     <div className="flex items-center cursor-pointer select-none">
       <div
         className="
-          w-24 h-24 p-1 rounded-full
+          w-10 h-10
+          sm:w-12 sm:h-12
+          md:w-16 md:h-16
+          lg:w-24 lg:h-24
+
+          p-1
+          rounded-full
           bg-linear-to-tr
           from-blue-400 via-purple-400 to-pink-400
           shadow-xl
           perspective-distant
+          transition-all
         "
       >
         <div
           className="
-            w-full h-full rounded-full overflow-hidden
+            w-full h-full
+            rounded-full
+            overflow-hidden
             backdrop-blur-sm
             transition-transform duration-700 ease-out
           "
@@ -34,8 +43,10 @@ function Logo() {
             src="/log.png"
             alt="SkillUp"
             className="
-              w-full h-full object-contain
-              scale-75 backface-hidden
+              w-full h-full
+              object-contain
+              scale-75
+              backface-hidden
             "
           />
         </div>
