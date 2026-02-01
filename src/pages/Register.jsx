@@ -121,7 +121,8 @@ function Register() {
         className="
           relative z-10
              animate-authIn
-         w-[92%] max-w-xs sm:max-w-sm
+             -translate-y-10 sm:-translate-y-6
+         w-[90%] max-w-xs sm:max-w-sm
          p-4 sm:p-8
           rounded-3xl
           bg-white/90
