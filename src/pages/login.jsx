@@ -28,6 +28,9 @@ function Login() {
           relative z-10
           w-[90%] max-w-sm
           p-8
+           -translate-y-10
+           +sm:-translate-y-12
++translate-y-6
           rounded-3xl
           bg-white/90
           dark:bg-gray-800/90
