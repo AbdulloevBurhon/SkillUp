@@ -13,6 +13,7 @@ const Header = forwardRef(({ onMenuClick }, ref) => {
       ref={ref}
       className="
         sticky top-0 z-50 w-full
+
         backdrop-blur-xl
         bg-white/80 dark:bg-gray-900/80
         border-b border-gray-200/60 dark:border-gray-700/60
@@ -22,14 +23,16 @@ const Header = forwardRef(({ onMenuClick }, ref) => {
         className="
           max-w-7xl mx-auto
           flex justify-between items-center
-          px-4 py-3
+     px-4 py-4 md:py-5
         "
       >
-        <div className="flex items-center">
-          <Logo />
+        {/* Logo */}
+        <div className="flex items-center h-12">
+          <Logo size="large" />
         </div>
 
-        <div className="flex items-center gap-3">
+        {/* Actions */}
+        <div className="flex items-center h-16 md:h-20">
           <LangSwitcher />
           <ThemeSwitcher />
 
