@@ -65,7 +65,24 @@ function Login() {
   return (
     <div className="h-screen w-full grid place-items-center bg-white dark:bg-gray-900 overflow-hidden">
       {/* Card */}
-      <div className="relative z-10 animate-authIn w-[90%] max-w-sm p-8 rounded-3xl bg-white dark:bg-gray-800 backdrop-blur-2xl border border-gray-200/40 dark:border-gray-700/40 shadow-[0_20px_60px_rgba(0,0,0,0.15)] transition-all">
+      <div
+        className="
+    relative z-10
+    animate-authIn
+
+    w-[90%] max-w-sm
+    p-8 rounded-3xl
+
+    bg-white dark:bg-gray-800
+    backdrop-blur-2xl
+    border border-gray-200/40 dark:border-gray-700/40
+    shadow-[0_20px_60px_rgba(0,0,0,0.15)]
+
+    transition-all
+
+    -translate-y-15   // 👈 ВАЖНО
+  "
+      >
         {/* Title */}
         <h2 className="text-3xl font-bold mb-6 text-center text-black dark:text-white">
           Вход
