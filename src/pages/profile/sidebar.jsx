@@ -75,7 +75,7 @@ function Sidebar({ open, onClose, topOffset = 0 }) {
                 </nav>
 
                 {/* Footer */}
-                <div className="p-2 border-t dark:border-gray-700 bg-white/80 dark:bg-gray-800/80">
+                <div className="mt-auto p-2 border-t shadow-inner dark:border-gray-700 bg-white/80 dark:bg-gray-800/80">
                   <SidebarButton icon={<LogOut />} text="Выйти" danger />
                 </div>
               </motion.aside>
