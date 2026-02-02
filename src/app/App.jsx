@@ -8,6 +8,7 @@ import BaseLayout from "../layout/BaseLayout";
 import MainLayout from "../layout/MainLayout";
 import ProfileLayout from "../layout/ProfileLayout";
 import PrivateRoute from "../routes/PrivateRoute";
+import AuthLayout from "../layout/AuthLayout";
 
 import Login from "../pages/login";
 import Register from "../pages/Register";
@@ -18,16 +19,21 @@ const router = createBrowserRouter([
     element: <BaseLayout />,
     children: [
       /* AUTH */
-      { path: "/login", element: <Login /> },
-      { path: "/register", element: <Register /> },
+      {
+        element: <AuthLayout />,
+        children: [
+          { path: "/login", element: <Login /> },
+          { path: "/register", element: <Register /> },
+        ],
+      },
 
-      /* HOME — FULLSCREEN */
-      { path: "/home", element: <Home /> },
-
-      /* CONTENT */
+      /* PUBLIC */
       {
         element: <MainLayout />,
-        children: [{ path: "/", element: <Navigate to="/home" replace /> }],
+        children: [
+          { path: "/", element: <Navigate to="/home" replace /> },
+          { path: "/home", element: <Home /> },
+        ],
       },
 
       /* PRIVATE */

@@ -4,23 +4,23 @@ function Home() {
   return (
     <div
       className="
-        h-95 sm:h-screen
-        w-full
-        flex
-        items-center
-        justify-center
-        relative
-        overflow-hidden
+    min-h-[calc(100vh-64px)]
+    w-full
+    flex
+    items-center
+    justify-center
+    relative
+    overflow-hidden
 
-        bg-gradient-to-br
-        from-blue-100
-        via-purple-100
-        to-pink-100
+    bg-gradient-to-br
+    from-blue-100
+    via-purple-100
+    to-pink-100
 
-        dark:from-gray-900
-        dark:via-gray-800
-        dark:to-gray-900
-      "
+    dark:from-gray-900
+    dark:via-gray-800
+    dark:to-gray-900
+  "
     >
       {/* Glow */}
       <div className="pointer-events-none absolute -top-40 -left-40 w-[28rem] h-[28rem] bg-blue-400/30 rounded-full blur-[140px]" />

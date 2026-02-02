@@ -120,3 +120,8 @@
 .animate-shake {
   animation: shake 0.35s ease-in-out;
 }
+html,
+body,
+#root {
+  height: 100%;
+}
