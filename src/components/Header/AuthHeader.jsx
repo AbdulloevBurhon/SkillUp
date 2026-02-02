@@ -21,7 +21,7 @@ function AuthHeader() {
       >
         {/* Logo */}
         <div className="flex items-center">
-          <Logo size="large" />
+          <Logo />
         </div>
 
         {/* Actions */}

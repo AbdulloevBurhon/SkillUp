@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Logo({ size = "normal" }) {
+function Logo() {
   const [angle, setAngle] = useState(0);
 
   useEffect(() => {
@@ -8,24 +8,22 @@ function Logo({ size = "normal" }) {
     return () => clearInterval(id);
   }, []);
 
-  const sizes = {
-    small: "w-10 h-10",
-    normal: "w-14 h-14",
-    large: "w-20 h-20",
-  };
-
   return (
     <div className="flex items-center cursor-pointer select-none">
       <div
-        className={`
-          ${sizes[size]}
+        className="
+          w-10 h-10
+          sm:w-12 sm:h-12
+          md:w-16 md:h-16
+          lg:w-20 lg:h-20
+
           p-1
           rounded-full
           bg-linear-to-tr
           from-blue-400 via-purple-400 to-pink-400
           shadow-xl
           transition-all
-        `}
+        "
       >
         <div
           className="
@@ -45,7 +43,7 @@ function Logo({ size = "normal" }) {
             className="
               w-full h-full
               object-contain
-              scale-75
+              scale-70
             "
           />
         </div>

@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-
 import ThemeSwitcher from "../ui/theme/switcher";
 import LangSwitcher from "../ui/lang/LangSwitcher";
 import Logo from "./logo";
@@ -13,7 +12,6 @@ const Header = forwardRef(({ onMenuClick }, ref) => {
       ref={ref}
       className="
         sticky top-0 z-50 w-full
-
         backdrop-blur-xl
         bg-white/80 dark:bg-gray-900/80
         border-b border-gray-200/60 dark:border-gray-700/60
@@ -23,19 +21,22 @@ const Header = forwardRef(({ onMenuClick }, ref) => {
         className="
           max-w-7xl mx-auto
           flex justify-between items-center
-     px-4 py-4 md:py-5
+          px-4 py-4 md:py-5
         "
       >
         {/* Logo */}
-        <div className="flex items-center h-12">
+        <div className="flex items-center h-10">
+          {" "}
+          {/* Уменьшил до h-10 */}
           <Logo size="large" />
         </div>
 
         {/* Actions */}
-        <div className="flex items-center h-16 md:h-20">
+        <div className="flex items-center h-10 space-x-3">
+          {" "}
+          {/* Уменьшил до h-10 и добавил пространство между элементами */}
           <LangSwitcher />
           <ThemeSwitcher />
-
           {showMenu && (
             <button
               onClick={onMenuClick}
