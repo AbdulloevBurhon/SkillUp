@@ -1,16 +1,10 @@
-import { forwardRef } from "react";
-
 import ThemeSwitcher from "../ui/theme/switcher";
 import LangSwitcher from "../ui/lang/LangSwitcher";
 import Logo from "./logo";
-import { EllipsisVertical } from "lucide-react";
 
-const Header = forwardRef(({ onMenuClick }, ref) => {
-  const showMenu = typeof onMenuClick === "function";
-
+function AuthHeader() {
   return (
     <header
-      ref={ref}
       className="
         sticky top-0 z-50 w-full
         backdrop-blur-xl
@@ -25,26 +19,19 @@ const Header = forwardRef(({ onMenuClick }, ref) => {
           px-4 py-3
         "
       >
+        {/* Logo */}
         <div className="flex items-center">
           <Logo />
         </div>
 
+        {/* Actions */}
         <div className="flex items-center gap-3">
           <LangSwitcher />
           <ThemeSwitcher />
-
-          {showMenu && (
-            <button
-              onClick={onMenuClick}
-              className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition"
-            >
-              <EllipsisVertical />
-            </button>
-          )}
         </div>
       </div>
     </header>
   );
-});
+}
 
-export default Header;
+export default AuthHeader;

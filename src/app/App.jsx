@@ -18,18 +18,20 @@ const router = createBrowserRouter([
   {
     element: <BaseLayout />,
     children: [
-      /* Публичные */
+      /* PUBLIC FULLSCREEN (auth) */
+      { path: "/login", element: <Login /> },
+      { path: "/register", element: <Register /> },
+
+      /* PUBLIC CONTENT */
       {
         element: <MainLayout />,
         children: [
           { path: "/", element: <Navigate to="/home" replace /> },
           { path: "/home", element: <Home /> },
-          { path: "/login", element: <Login /> },
-          { path: "/register", element: <Register /> },
         ],
       },
 
-      /* Приватные */
+      /* PRIVATE */
       {
         element: <PrivateRoute />,
         children: [
