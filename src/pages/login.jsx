@@ -1,23 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "../components/ui/button/Button";
 import Input from "../components/ui/input/Input";
-
 import { Mail, Lock } from "lucide-react";
 import Label from "../components/ui/label/Label";
 
 function Login() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Хук для навигации
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [error, setError] = useState("");
-
-  const [shake, setShake] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  // Для подсветки полей
+  const [shake, setShake] = useState(false);
   const [fieldError, setFieldError] = useState({
     email: false,
     password: false,
@@ -27,88 +21,49 @@ function Login() {
     setShake(true);
     setTimeout(() => setShake(false), 400);
   };
+
   const handleLogin = () => {
-    // Сброс ошибок
     setError("");
     setFieldError({ email: false, password: false });
 
-    // ❌ Пустые поля
+    // Проверка пустых полей
     if (!email || !password) {
       setError("Пожалуйста, заполните все поля");
-
-      setFieldError({
-        email: !email,
-        password: !password,
-      });
-
+      setFieldError({ email: !email, password: !password });
       triggerShake();
       return;
     }
 
-    // Старт загрузки
     setLoading(true);
 
-    // Fake API
     setTimeout(() => {
-      // ❌ Неверные данные
+      // Проверка данных
       if (email !== "test@mail.com" || password !== "123456") {
         setError("Неверный логин или пароль");
-
-        setFieldError({
-          email: true,
-          password: true,
-        });
-
+        setFieldError({ email: true, password: true });
         triggerShake();
         setLoading(false);
         return;
       }
 
-      // ✅ Успех → переход в профиль
+      // Успех → сохранение токена и переход в профиль
+      localStorage.setItem("auth_token", "your-token-here");
       setLoading(false);
-      navigate("/profile"); // ← ВОТ ЭТО ГЛАВНОЕ
+      navigate("/profile"); // Переход на страницу профиля
     }, 1500);
   };
 
   return (
     <div
       style={{ height: "80dvh" }}
-      className="
-        w-full
-        overflow-hidden
-        grid place-items-center
-        relative
-        bg-gradient-to-br
-        from-blue-100
-        via-purple-100
-        to-pink-100
-        dark:from-gray-900
-        dark:via-gray-800
-        dark:to-gray-900
-      "
+      className="w-full overflow-hidden grid place-items-center relative bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
     >
       {/* Glow */}
       <div className="pointer-events-none absolute -top-40 -left-40 w-[28rem] h-[28rem] bg-blue-400/25 rounded-full blur-[120px]" />
       <div className="pointer-events-none absolute -bottom-40 -right-40 w-[28rem] h-[28rem] bg-purple-400/25 rounded-full blur-[120px]" />
 
       {/* Card */}
-      <div
-        className="
-          relative z-10
-          animate-authIn
-          w-[90%] max-w-sm
-          p-8
-          rounded-3xl
-          -translate-y-10
-          bg-white/90
-          dark:bg-gray-800/90
-          backdrop-blur-2xl
-          border border-gray-200/40
-          dark:border-gray-700/40
-          shadow-[0_20px_60px_rgba(0,0,0,0.15)]
-          transition-all
-        "
-      >
+      <div className="relative z-10 animate-authIn w-[90%] max-w-sm p-8 rounded-3xl -translate-y-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-2xl border border-gray-200/40 dark:border-gray-700/40 shadow-[0_20px_60px_rgba(0,0,0,0.15)] transition-all">
         {/* Title */}
         <h2 className="text-3xl font-bold mb-6 text-center">Вход</h2>
 
@@ -121,8 +76,7 @@ function Login() {
         <div className="space-y-4 mb-4">
           {/* Email */}
           <div className="flex flex-col gap-1">
-            <Label htmlFor={"email"}>Логин</Label>
-
+            <Label htmlFor="email">Логин</Label>
             <Input
               id="email"
               type="email"
@@ -139,7 +93,6 @@ function Login() {
           {/* Password */}
           <div className="flex flex-col gap-1">
             <Label htmlFor="password">Пароль</Label>
-
             <Input
               type="password"
               placeholder="Пароль"

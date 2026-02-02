@@ -1,27 +1,32 @@
 import {
   createBrowserRouter,
-  Navigate,
   RouterProvider,
+  Navigate,
 } from "react-router-dom";
-
 import MainLayout from "../layout/MainLayout";
-
 import Login from "../pages/login";
 import Register from "../pages/Register";
 import Home from "../pages/home";
-import Profile from "../pages/Profile";
+import Profile from "../pages/profile/Profile";
 
 const router = createBrowserRouter([
   {
     element: <MainLayout />,
     children: [
-      // ✅ Главная — Home
-      { path: "/", element: <Navigate to="/home" replace /> }, // направляем на home
-
+      { path: "/", element: <Navigate to="/home" replace /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       { path: "/home", element: <Home /> },
-      { path: "/profile", element: <Profile /> },
+
+      // Проверка авторизации перед загрузкой профиля
+      {
+        path: "/profile",
+        element: localStorage.getItem("auth_token") ? (
+          <Profile />
+        ) : (
+          <Navigate to="/login" replace />
+        ),
+      },
     ],
   },
 ]);
