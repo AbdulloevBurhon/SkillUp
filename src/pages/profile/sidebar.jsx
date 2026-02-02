@@ -37,14 +37,22 @@ function Sidebar({ open, onClose, topOffset = 0 }) {
         </button>
       </div>
 
-      <nav className="flex-1 flex flex-col gap-2 p-2">
+      <nav className="flex-1 flex flex-col overflow-y-auto p-2 gap-2">
         <SidebarButton icon={<User />} text="Профиль" />
         <SidebarButton icon={<Settings />} text="Настройки" />
-
-        <div className="flex-1" />
-
-        <SidebarButton icon={<LogOut />} text="Выйти" />
       </nav>
+
+      <div
+        className="
+  p-2
+  border-t dark:border-gray-700
+  sticky bottom-0
+  bg-white/90 dark:bg-gray-800/90
+  backdrop-blur-xl
+"
+      >
+        <SidebarButton icon={<LogOut />} text="Выйти" />
+      </div>
     </aside>
   );
 }
