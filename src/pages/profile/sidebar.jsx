@@ -13,6 +13,7 @@ function Sidebar() {
   return (
     <aside
       className={`
+        h-full
         transition-all duration-300 ease-in-out
         ${isOpen ? "w-64" : "w-16"}
         bg-white/90 dark:bg-gray-800/90
@@ -33,7 +34,9 @@ function Sidebar() {
           Меню
         </span>
 
+        {/* Toggle */}
         <button
+          type="button"
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:scale-110 transition"
         >
@@ -42,7 +45,7 @@ function Sidebar() {
       </div>
 
       {/* Menu */}
-      <nav className="flex-1 flex flex-col gap-2 p-2">
+      <nav className="flex-1 flex flex-col gap-2 p-2 min-h-0">
         {/* Profile */}
         <SidebarButton
           icon={<User size={20} />}
@@ -78,12 +81,13 @@ function Sidebar() {
 function SidebarButton({ icon, text, isOpen, color }) {
   return (
     <button
+      type="button"
       className={`
         flex items-center gap-3
         w-full px-3 py-2 rounded-xl
         text-white transition
         ${color}
-        ${!isOpen && "justify-center px-0"}
+        ${!isOpen ? "justify-center px-0" : ""}
       `}
     >
       {icon}

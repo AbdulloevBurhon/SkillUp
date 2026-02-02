@@ -87,6 +87,7 @@ function Register() {
     <main
       className="
         w-full
+      
 
         min-h-[calc(100vh-64px)]
 
@@ -113,6 +114,7 @@ function Register() {
           w-full max-w-sm
 
           p-6 sm:p-8
+         
 
           rounded-3xl
           bg-white/90
