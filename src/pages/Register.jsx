@@ -87,6 +87,7 @@ function Register() {
     <main
       className="
         w-full
+        px-1
       
 
         min-h-[calc(100vh-64px)]
@@ -110,10 +111,11 @@ function Register() {
       <div
         className="
           animate-authIn
-
-          w-full max-w-sm
-
-          p-6 sm:p-8
+    
+           max-w-sm
+          px-3
+           py-6
+          sm:px-8
          
 
           rounded-3xl
