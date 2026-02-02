@@ -82,18 +82,19 @@ function LangSwitcher() {
       <button
         onClick={() => setOpen(!open)}
         className="
-          group flex items-center gap-2
-          px-3 py-1.5
-          rounded-full
-          border border-gray-200/50 dark:border-gray-700/50
-          bg-white/80 dark:bg-gray-800/80
-          backdrop-blur
-          shadow-sm
-          hover:shadow-lg
-          hover:scale-[1.02]
-          transition-all
-          text-sm
-        "
+        group flex items-center gap-2
+        px-3 py-1.5
+        rounded-full
+        border border-gray-200/50 dark:border-gray-700/50
+        bg-white/80 dark:bg-gray-800/80
+        backdrop-blur
+        shadow-sm
+        hover:shadow-lg
+        hover:scale-[1.02]
+        transition-all
+        text-sm
+        text-gray-800 dark:text-gray-200
+      "
       >
         <Flag src={current.flag} alt={current.name} />
 
@@ -102,10 +103,10 @@ function LangSwitcher() {
         {/* Arrow */}
         <span
           className={`
-            text-xs opacity-60
-            transition-transform
-            ${open ? "rotate-180" : ""}
-          `}
+          text-xs opacity-60
+          transition-transform
+          ${open ? "rotate-180" : ""}
+        `}
         >
           ▼
         </span>
@@ -114,21 +115,21 @@ function LangSwitcher() {
       {/* Dropdown */}
       <div
         className={`
-          absolute right-0 mt-2 w-48
-          rounded-2xl
-          border border-gray-200/60 dark:border-gray-700/60
-          bg-white/90 dark:bg-gray-800/90
-          backdrop-blur-xl
-          shadow-2xl
-          overflow-hidden
-          z-50
-          transition-all duration-200
-          ${
-            open
-              ? "opacity-100 scale-100 translate-y-0"
-              : "opacity-0 scale-95 -translate-y-1 pointer-events-none"
-          }
-        `}
+        absolute right-0 mt-2 w-48
+        rounded-2xl
+        border border-gray-200/60 dark:border-gray-700/60
+        bg-white/90 dark:bg-gray-800/90
+        backdrop-blur-xl
+        shadow-2xl
+        overflow-hidden
+        z-50
+        transition-all duration-200
+        ${
+          open
+            ? "opacity-100 scale-100 translate-y-0"
+            : "opacity-0 scale-95 -translate-y-1 pointer-events-none"
+        }
+      `}
       >
         {languages.map((lang) => {
           const active = lang.code === current.code;
@@ -138,16 +139,17 @@ function LangSwitcher() {
               key={lang.code}
               onClick={() => changeLang(lang.code)}
               className={`
-                w-full flex items-center gap-3
-                px-4 py-3
-                text-left text-sm
-                transition
-                ${
-                  active
-                    ? "bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 font-semibold"
-                    : "hover:bg-gray-100/70 dark:hover:bg-gray-700/70"
-                }
-              `}
+              w-full flex items-center gap-3
+              px-4 py-3
+              text-left text-sm
+              transition
+              ${
+                active
+                  ? "bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 font-semibold"
+                  : "hover:bg-gray-100/70 dark:hover:bg-gray-700/70"
+              }
+              text-gray-800 dark:text-gray-200
+            `}
             >
               <Flag src={lang.flag} alt={lang.name} />
 

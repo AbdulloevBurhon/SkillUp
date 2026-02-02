@@ -34,10 +34,19 @@ function Login() {
       return;
     }
 
+    // Базовая проверка email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      setError("Введите корректный email");
+      setFieldError({ email: true, password: false });
+      triggerShake();
+      return;
+    }
+
     setLoading(true);
 
     setTimeout(() => {
-      // Проверка данных
+      // Симуляция проверки логина
       if (email !== "test@mail.com" || password !== "123456") {
         setError("Неверный логин или пароль");
         setFieldError({ email: true, password: true });
@@ -54,18 +63,13 @@ function Login() {
   };
 
   return (
-    <div
-      style={{ height: "80dvh" }}
-      className="w-full overflow-hidden grid place-items-center relative bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
-    >
-      {/* Glow */}
-      <div className="pointer-events-none absolute -top-40 -left-40 w-[28rem] h-[28rem] bg-blue-400/25 rounded-full blur-[120px]" />
-      <div className="pointer-events-none absolute -bottom-40 -right-40 w-[28rem] h-[28rem] bg-purple-400/25 rounded-full blur-[120px]" />
-
+    <div className="h-screen w-full grid place-items-center bg-white dark:bg-gray-900 overflow-hidden">
       {/* Card */}
-      <div className="relative z-10 animate-authIn w-[90%] max-w-sm p-8 rounded-3xl -translate-y-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-2xl border border-gray-200/40 dark:border-gray-700/40 shadow-[0_20px_60px_rgba(0,0,0,0.15)] transition-all">
+      <div className="relative z-10 animate-authIn w-[90%] max-w-sm p-8 rounded-3xl bg-white dark:bg-gray-800 backdrop-blur-2xl border border-gray-200/40 dark:border-gray-700/40 shadow-[0_20px_60px_rgba(0,0,0,0.15)] transition-all">
         {/* Title */}
-        <h2 className="text-3xl font-bold mb-6 text-center">Вход</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center text-black dark:text-white">
+          Вход
+        </h2>
 
         {/* Error message */}
         {error && (
@@ -74,7 +78,6 @@ function Login() {
 
         {/* Inputs */}
         <div className="space-y-4 mb-4">
-          {/* Email */}
           <div className="flex flex-col gap-1">
             <Label htmlFor="email">Логин</Label>
             <Input
@@ -90,7 +93,6 @@ function Login() {
             />
           </div>
 
-          {/* Password */}
           <div className="flex flex-col gap-1">
             <Label htmlFor="password">Пароль</Label>
             <Input

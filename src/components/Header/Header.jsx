@@ -13,8 +13,9 @@ const Header = forwardRef(({ onMenuClick }, ref) => {
       className="
         sticky top-0 z-50 w-full
         backdrop-blur-xl
-        bg-white/80 dark:bg-gray-900/80
+        bg-white/80 dark:bg-gray-900/90
         border-b border-gray-200/60 dark:border-gray-700/60
+        transition-all duration-300
       "
     >
       <div
@@ -26,23 +27,29 @@ const Header = forwardRef(({ onMenuClick }, ref) => {
       >
         {/* Logo */}
         <div className="flex items-center h-10">
-          {" "}
-          {/* Уменьшил до h-10 */}
           <Logo size="large" />
         </div>
 
         {/* Actions */}
         <div className="flex items-center h-10 space-x-3">
-          {" "}
-          {/* Уменьшил до h-10 и добавил пространство между элементами */}
           <LangSwitcher />
           <ThemeSwitcher />
           {showMenu && (
             <button
               onClick={onMenuClick}
-              className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+              className="
+                p-2 rounded-lg
+                text-gray-800 dark:text-gray-200
+                bg-white/70 dark:bg-gray-800/70
+                backdrop-blur-md
+                shadow-md dark:shadow-black/30
+                hover:bg-gray-100 dark:hover:bg-gray-700
+                hover:shadow-lg active:scale-95
+                transition-all duration-200
+                focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+              "
             >
-              <EllipsisVertical />
+              <EllipsisVertical size={22} />
             </button>
           )}
         </div>
