@@ -11,6 +11,7 @@ function Sidebar({ open, onClose, topOffset = 0 }) {
         fixed right-0
         w-64
         z-40
+        
 
         bg-white/90 dark:bg-gray-800/90
         backdrop-blur-xl

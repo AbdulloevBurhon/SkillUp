@@ -13,22 +13,21 @@ import Login from "../pages/login";
 import Register from "../pages/Register";
 import Home from "../pages/home";
 import Profile from "../pages/profile/Profile";
-
 const router = createBrowserRouter([
   {
     element: <BaseLayout />,
     children: [
-      /* PUBLIC FULLSCREEN (auth) */
+      /* AUTH */
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
 
-      /* PUBLIC CONTENT */
+      /* HOME — FULLSCREEN */
+      { path: "/home", element: <Home /> },
+
+      /* CONTENT */
       {
         element: <MainLayout />,
-        children: [
-          { path: "/", element: <Navigate to="/home" replace /> },
-          { path: "/home", element: <Home /> },
-        ],
+        children: [{ path: "/", element: <Navigate to="/home" replace /> }],
       },
 
       /* PRIVATE */
