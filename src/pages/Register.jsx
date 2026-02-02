@@ -128,7 +128,9 @@ function Register() {
         "
       >
         {/* Title */}
-        <h2 className="text-3xl font-bold mb-6 text-center">Регистрация</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center text-black dark:text-white">
+          Регистрация
+        </h2>
 
         {/* Error */}
         {error && (

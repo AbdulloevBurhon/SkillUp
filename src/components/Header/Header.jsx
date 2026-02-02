@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
+import { EllipsisVertical } from "lucide-react";
 import ThemeSwitcher from "../ui/theme/switcher";
 import LangSwitcher from "../ui/lang/LangSwitcher";
 import Logo from "./logo";
-import { EllipsisVertical } from "lucide-react";
 
 const Header = forwardRef(({ onMenuClick }, ref) => {
   const showMenu = typeof onMenuClick === "function";
@@ -13,7 +13,7 @@ const Header = forwardRef(({ onMenuClick }, ref) => {
       className="
         sticky top-0 z-50 w-full
         backdrop-blur-xl
-        bg-white/80 dark:bg-gray-900/90
+        bg-white/80 dark:bg-gray-900/80
         border-b border-gray-200/60 dark:border-gray-700/60
         transition-all duration-300
       "
@@ -34,18 +34,18 @@ const Header = forwardRef(({ onMenuClick }, ref) => {
         <div className="flex items-center h-10 space-x-3">
           <LangSwitcher />
           <ThemeSwitcher />
+
           {showMenu && (
             <button
               onClick={onMenuClick}
               className="
                 p-2 rounded-lg
                 text-gray-800 dark:text-gray-200
-                bg-white/70 dark:bg-gray-800/70
-                backdrop-blur-md
-                shadow-md dark:shadow-black/30
+                bg-transparent
                 hover:bg-gray-100 dark:hover:bg-gray-700
-                hover:shadow-lg active:scale-95
+                hover:shadow-lg
                 transition-all duration-200
+                active:scale-95
                 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
               "
             >
