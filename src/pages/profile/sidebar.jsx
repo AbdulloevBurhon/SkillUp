@@ -42,22 +42,22 @@ function Sidebar({ open, onClose, topOffset = 0 }) {
                   height: `calc(100vh - ${topOffset}px)`,
                 }}
                 className="
-                  absolute right-0
+    absolute right-0
 
-                  w-[70vw] sm:w-56 md:w-60 max-w-[280px]
+    w-[70vw] sm:w-56 md:w-60 max-w-[280px]
 
-                  bg-white/90 dark:bg-gray-800/90
-                  backdrop-blur-xl
-                  border-l border-gray-200/40 dark:border-gray-700/40
-                  shadow-2xl
+    bg-white/90 dark:bg-gray-800/90
+    backdrop-blur-xl
+    border-l border-gray-200/40 dark:border-gray-700/40
+    shadow-2xl
 
-                  flex flex-col
-                  rounded-l-2xl
-                  overflow-hidden
-                "
+    flex flex-col
+    rounded-l-2xl
+    overflow-hidden
+  "
               >
                 {/* Header */}
-                <div className="flex items-center justify-between p-3 border-b dark:border-gray-700">
+                <div className="flex items-center justify-between p-3 border-b dark:border-gray-700 shrink-0">
                   <span className="text-lg font-bold">Меню</span>
 
                   <button
@@ -68,14 +68,23 @@ function Sidebar({ open, onClose, topOffset = 0 }) {
                   </button>
                 </div>
 
-                {/* Menu */}
-                <nav className="flex-1 flex flex-col overflow-y-auto p-2 gap-2">
+                {/* Scroll area */}
+                <nav className="flex-1 overflow-y-auto p-2 flex flex-col gap-2">
                   <SidebarButton icon={<User />} text="Профиль" />
                   <SidebarButton icon={<Settings />} text="Настройки" />
                 </nav>
 
-                {/* Footer */}
-                <div className="mt-auto p-2 border-t shadow-inner dark:border-gray-700 bg-white/80 dark:bg-gray-800/80">
+                {/* Footer — всегда внизу */}
+                <div
+                  className="
+    shrink-0
+    p-2
+    border-t
+    shadow-inner
+    dark:border-gray-700
+    bg-white/90 dark:bg-gray-800/90
+  "
+                >
                   <SidebarButton icon={<LogOut />} text="Выйти" danger />
                 </div>
               </motion.aside>
