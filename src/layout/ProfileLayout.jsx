@@ -1,5 +1,6 @@
 import { useState, useRef, useLayoutEffect } from "react";
 import { Outlet } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import Sidebar from "../pages/profile/sidebar";
 import Header from "../components/Header/Header";
@@ -17,7 +18,12 @@ function ProfileLayout() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col bg-white dark:bg-gray-900 overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="h-screen flex flex-col bg-white dark:bg-gray-900 overflow-hidden"
+    >
       {/* Header */}
       <Header ref={headerRef} onMenuClick={() => setSidebarOpen(true)} />
 
@@ -51,7 +57,7 @@ function ProfileLayout() {
           <Outlet />
         </main>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
